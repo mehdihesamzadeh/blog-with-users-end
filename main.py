@@ -67,7 +67,7 @@ db.create_all()
 def admin_only(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if current_user.id != 4:
+        if current_user.email != "mehdi@email.com":
             return abort(403)
         return f(*args, **kwargs)
     return decorated_function
