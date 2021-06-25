@@ -14,7 +14,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
 Bootstrap(app)
-gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False, base_url=None)
+gravatar = Gravatar(app, size=500, rating='g', default='robohash', force_default=False, force_lower=False, use_ssl=False, base_url=None)
 
 ##CONNECT TO DB
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
@@ -67,7 +67,7 @@ db.create_all()
 def admin_only(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if current_user.id != 1:
+        if current_user.id != 4:
             return abort(403)
         return f(*args, **kwargs)
     return decorated_function
